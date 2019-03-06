@@ -1,0 +1,143 @@
+.cal-container {
+    min-width: 360px;
+    max-width: 768px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+    z-index: 999;
+}
+header span {
+    line-height: 50px;
+}
+.cal-header {
+    height: 26px;
+    padding: 12px 0 2px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+    background-color: #fff;
+}
+.cal-header span {
+    flex: 1;
+    font-size: 12px;
+    color: #bcbcbc;
+    text-align: center;
+}
+header .cal-date {
+    display: block;
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+    margin: 0 auto;
+}
+header .cal-today {
+    font-size: 14px;
+    position: absolute;
+    right: 16px;
+    top:0;
+}
+#cal-main {
+    position: relative;
+    overflow: hidden;
+    height: 294px;
+}
+
+.cal-body {
+    width: 33.33%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cal-body span {
+    height: 22px;
+    width: 14.28%;
+    text-align: center;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.cal-body span b {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+.cal-body span b.b_blue {
+    border-radius: 50%;
+    border: 1px solid #335e9e;
+    color: #335e9e;
+}
+.cal-body span b.bg_blue {
+    border-radius: 50%;
+    background-color: #2a579a;
+    color: #fff;
+}
+#cal-main .arrow {
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotateZ(180deg);
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+}
+.arrow .arrow-bottom {
+    margin-top: -15px;
+    color: #2c5a9c;
+}
+.arrow .arrow-top {
+    color: #7391bc;
+}
+.cal-window {
+    padding-top: 12px;
+    position: relative;
+    z-index: 9;
+    transform: translateY(0);
+    height: auto;
+}
+.cal-window .cal-window-up {
+    width: 100%;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    display: none;
+    background-color: #fff;
+    opacity: 0;
+}
+.cal-window .cal-window-down {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    display: none;
+    background-color: #fff;
+    opacity: 0;
+}
+.cal-swipe {
+    width: 300%;
+    display: flex;
+    align-items: flex-start;
+    transform: translateX(-33.33%);
+    z-index: 9;
+    height: 282px;
+}
+main .cal-text {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+}

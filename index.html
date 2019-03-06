@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>日历</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<div id="app" class="cal-container">
+    <header><span class="cal-date">{{ $store.getters.updateHeaderDate }}</span><span class="cal-today" @click="backToToday">今天</span></header>
+    <div class="cal-header"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+    <main id="cal-content">
+        <div id="cal-main">
+            <div class="cal-window">
+                <div class="cal-swipe" ref="calBox">
+                    <component :is="'cal-prev'" :right="right" :left="left" v-if="pattern"></component>
+                    <component :is="'cal-now'" v-if="pattern"></component>
+                    <component :is="'cal-next'" :left="left" :right="right" v-if="pattern"></component>
+                    <component :is="'cal-week-prev'" :right="right" v-show="!pattern" v-if="weekPattern"></component>
+                    <component :is="'cal-week-now'" v-show="!pattern" v-if="weekPattern"></component>
+                    <component :is="'cal-week-next'" :left="left" v-show="!pattern" v-if="weekPattern"></component>
+                </div>
+                <div class="cal-window-up"
+                     :style="{height:(height * ($store.getters.getWindowUpHeight - 1) / 6 - 25) > 0? height * ($store.getters.getWindowUpHeight - 1) / 6 - 25 + 'px':0}"></div>
+                <div class="cal-window-down"
+                     :style="{height:(height * (6 - $store.getters.getWindowUpHeight) / 6 -20) > 0?height * (6 - $store.getters.getWindowUpHeight) / 6 - 20 + 'px':0}"></div>
+            </div>
+            <div class="arrow">
+                <span class="arrow-top fa fa-angle-down"></span>
+                <span class="arrow-bottom fa fa-angle-down"></span>
+            </div>
+
+        </div>
+        <div class="cal-text"></div>
+    </main>
+</div>
+<template id="cal-now">
+    <div class="cal-body">
+        <span v-for="item in $store.state.daysOfWeek" :key="'cal-' + item"></span>
+        <span v-for="item in $store.state.monthDays" :key="'cal--' + item">
+            <b :class="{b_blue: $store.getters.isCurrentDate && item == $store.state.currentDate[0],
+            bg_blue: item == chosenDate}" @click="changeBackgroundColor">{{ item }}</b>
+        </span>
+    </div>
+</template>
+<template id="cal-next">
+    <div class="cal-body">
+        <span v-for="item in daysOfWeek" :key="'cal-' + item"></span>
+        <span v-for="item in currentMonthDays" :key="'cal--' + item"><b>{{ item }}</b></span>
+    </div>
+</template>
+<template id="cal-week-now">
+    <div class="cal-body">
+       <span v-for="item in MWeekArr" :key="'cal-day-' + item.D">
+            <b :class="{b_blue: $store.getters.isCurrentDate && item.D == $store.state.currentDate[0] && item.M == $store.state.currentDate[1] ,
+            bg_blue: item.D == chosenDate}" @click="changeBackgroundColor">{{ item.D }}</b>
+        </span>
+    </div>
+</template>
+<template id="cal-week-next">
+    <div class="cal-body">
+       <span v-for="item in weekArr" :key="'cal-day-' + item">
+            <b>{{ item }}</b>
+        </span>
+    </div>
+</template>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/vuex.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/index.js"></script>
+
+</html>

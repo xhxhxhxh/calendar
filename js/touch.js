@@ -23,7 +23,7 @@ window.onload = function () {
     swipe.addEventListener('touchmove',function (e) {
         e.preventDefault();
     });
-    mainContent.addEventListener('touchmove',function (e) {
+    calContent.addEventListener('touchmove',function (e) {
         e.preventDefault();
     });
 

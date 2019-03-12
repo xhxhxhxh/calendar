@@ -23,6 +23,9 @@ window.onload = function () {
     swipe.addEventListener('touchmove',function (e) {
         e.preventDefault();
     });
+    mainContent.addEventListener('touchmove',function (e) {
+        e.preventDefault();
+    });
 
 //获取单页日历宽度、高度
     let singleSwipe = swipe.offsetWidth / 3;
